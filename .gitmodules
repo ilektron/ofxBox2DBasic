@@ -1,0 +1,3 @@
+[submodule "libs/box2d11"]
+	path = libs/box2d11
+	url = https://github.com/ilektron/box2d11.git
