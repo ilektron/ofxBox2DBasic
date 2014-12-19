@@ -2,6 +2,8 @@
 
 #include <chrono>
 
+using namespace box2d;
+
 ofApp::ofApp() :
 	m_hide_gui(false),
 	m_draw_box2d_debug(true)
@@ -35,7 +37,7 @@ void ofApp::setup()
 	m_draw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit | b2Draw::e_aabbBit | b2Draw::e_jointBit | b2Draw::e_pairBit);
 	
 	b2BodyDef myBodyDef;
-	myBodyDef.type = b2DYNAMIC_BODY; //this will be a dynamic body
+	myBodyDef.type = b2; //this will be a dynamic body
 	myBodyDef.position.Set(0, 20); //set the starting position
 	myBodyDef.angle = 0; //set the starting angle
 	
@@ -52,7 +54,7 @@ void ofApp::setup()
 	
 	b2CircleShape circleShape;
 	circleShape.m_radius = 1;
-	circleShape.m_p.Set(2,0);
+	circleShape.m_p = {{2,0}};
 	
 	b2FixtureDef circleFixtureDef;
 	circleFixtureDef.shape = &circleShape;
@@ -60,11 +62,11 @@ void ofApp::setup()
 	
 	dynamicBody->CreateFixture(&circleFixtureDef);
 	
-	dynamicBody->SetTransform(b2Vec2(0, 20), 1);
+	dynamicBody->SetTransform(b2Vec2{{0, 20}}, 1);
 	
 	
 	b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, 0.0f);
+	groundBodyDef.position = {{0.0f, 0.0f}};
 	b2Body* groundBody = m_world->CreateBody(&groundBodyDef);
 	b2PolygonShape groundBox;
 	groundBox.SetAsBox(50.0f, 0.1f);

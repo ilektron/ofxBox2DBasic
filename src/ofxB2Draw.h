@@ -2,7 +2,8 @@
 #ifndef OFXB2DRAW_H_
 #define OFXB2DRAW_H_
 
-#include "Box2D/Box2D.h"
+// #include "Box2D/Box2D.h"
+#include "box2d11/Box2D/Box2D.h"
 
 constexpr double OFXB2DBASIC_WORLD_SCALE = 25.0f;
 // constexpr double OFXB2DBASIC_WORLD_SCALE = 1.0f;

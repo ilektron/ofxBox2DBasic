@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "Box2D/Box2D.h"
+#include "box2d11/Box2D/Box2D.h"
 #include "ofxB2Draw.h"
 
 
@@ -51,8 +51,8 @@ private:
 
 	ofxPanel gui;
 	
-	std::shared_ptr<b2World> m_world;
-	ofxB2Draw m_draw;
+    std::shared_ptr<box2d::b2World> m_world;
+	box2d::ofxB2Draw m_draw;
 	
 };
 
