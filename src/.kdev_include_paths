@@ -1,0 +1,6 @@
+../libs
+../libs/Box2D/Collision
+../libs/Box2D/Common
+../libs/Box2D/Dynamics
+../libs/Box2D/Rope
+/home/stephen/personal/openFrameworks/libs/openFrameworks
