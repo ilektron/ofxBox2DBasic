@@ -52,7 +52,7 @@ private:
 	ofxPanel gui;
 	
     std::shared_ptr<box2d::b2World> m_world;
-	box2d::ofxB2Draw m_draw;
+	ofxB2Draw m_draw;
 	
 };
 

@@ -61,7 +61,7 @@ OF_ROOT = /home/stephen/personal/openFrameworks
 #
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
-# PROJECT_EXCLUSIONS =
+PROJECT_EXCLUSIONS = $(OF_ROOT)/addons/ofxBox2DBasic/libs/box2d11/ofTestBed%
 
 ################################################################################
 # PROJECT LINKER FLAGS
@@ -138,5 +138,5 @@ PROJECT_OPTIMIZATION_CFLAGS_DEBUG = -g
 #		(default) PROJECT_CC = (blank)
 #   Note: Leave a leading space when adding list items with the += operator
 ################################################################################
-PROJECT_CXX = clang++
-PROJECT_CC = clang
+PROJECT_CXX = clang++-3.6
+PROJECT_CC = clang-3.6

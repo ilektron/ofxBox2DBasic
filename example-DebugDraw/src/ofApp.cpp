@@ -30,21 +30,21 @@ void ofApp::setup()
 	gui.add(ringButton.setup("ring"));
 	gui.add(screenSize.setup("screen size", ""));
 
-	b2Vec2 gravity(0, -9.8); //normal earth gravity, 9.8 m/s/s straight down!
+	b2Vec2 gravity{{0, -9.8}}; //normal earth gravity, 9.8 m/s/s straight down!
 	m_world = make_shared<b2World>(gravity);
 	m_world->SetDebugDraw(&m_draw);
 	
 	m_draw.SetFlags(b2Draw::e_shapeBit | b2Draw::e_centerOfMassBit | b2Draw::e_aabbBit | b2Draw::e_jointBit | b2Draw::e_pairBit);
 	
 	b2BodyDef myBodyDef;
-	myBodyDef.type = b2; //this will be a dynamic body
-	myBodyDef.position.Set(0, 20); //set the starting position
+	myBodyDef.type = b2BodyType::DYNAMIC_BODY; //this will be a dynamic body
+	myBodyDef.position = {{0, 20}}; //set the starting position
 	myBodyDef.angle = 0; //set the starting angle
 	
 	b2Body* dynamicBody = m_world->CreateBody(&myBodyDef);
 	
 	b2PolygonShape boxShape;
-	boxShape.SetAsBox(1,1, b2Vec2(-2, 0), 0);
+	boxShape.SetAsBox(1,1, b2Vec2{{-2, 0}}, 0);
 	
 	b2FixtureDef boxFixtureDef;
 	boxFixtureDef.shape = &boxShape;
@@ -53,7 +53,7 @@ void ofApp::setup()
 	dynamicBody->CreateFixture(&boxFixtureDef);
 	
 	b2CircleShape circleShape;
-	circleShape.m_radius = 1;
+    circleShape.SetRadius(1);
 	circleShape.m_p = {{2,0}};
 	
 	b2FixtureDef circleFixtureDef;
@@ -101,8 +101,8 @@ void ofApp::update()
 	std::chrono::duration<float> time_step = current_time - last_time;
 	last_time = current_time;
 	
-	int32 velocityIterations = 8;   //how strongly to correct velocity
-	int32 positionIterations = 3;   //how strongly to correct position
+	int32_t velocityIterations = 8;   //how strongly to correct velocity
+	int32_t positionIterations = 3;   //how strongly to correct position
 
 	m_world->Step( time_step.count(), velocityIterations, positionIterations);
 }
@@ -155,6 +155,7 @@ void ofApp::draw()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	m_world->DrawDebugData();
 	glPopMatrix();
+    
 }
 
 //--------------------------------------------------------------
